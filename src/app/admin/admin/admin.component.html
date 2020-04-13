@@ -1,0 +1,128 @@
+<div align="center" class="body">
+  <div class="menu">
+    <div class="sidenav">
+      <a (click)="viewCreateUser()">Create User</a>
+      <a (click)="viewUpdateUser()">Update User</a>
+      <a (click)="viewDeleteUser()">Delete User</a>
+      <a (click)="viewReadAllUser()">View All Users</a>
+      <a (click)="viewAllEmail()">View All Emails</a>
+      <br /><br /><br />
+      <a (click)="logout()" style="bottom: 0;">Logout</a>
+    </div>
+  </div>
+  <div class="main">
+    <div *ngIf="showCreateUser">
+      <form [formGroup]="userForm" style="text-align: left;">
+        <div class="form-group">
+          <label for="email">
+            Email:
+            <input type="text" formControlName="email" class="form-control" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            Password:
+            <input
+              type="text"
+              formControlName="password"
+              class="form-control"
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="user_type">
+            User Type:
+            <input
+              type="text"
+              formControlName="user_type"
+              class="form-control"
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <button (click)="createUser()" class="btn btn-primary">
+            Create User
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="showUpdateUser">
+      <form [formGroup]="userForm" style="text-align: left;">
+        <div class="form-group">
+          <label for="email">
+            Email:
+            <input type="text" formControlName="email" class="form-control" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            Password:
+            <input
+              type="text"
+              formControlName="password"
+              class="form-control"
+            />
+          </label>
+        </div>
+        <div class="form-group">
+          <button (click)="updateUser()" class="btn btn-primary">
+            Update User
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="showDeleteUser">
+      <form [formGroup]="userForm" style="text-align: left;">
+        <div class="form-group">
+          <label for="email">
+            Email:
+            <input type="text" formControlName="email" class="form-control" />
+          </label>
+        </div>
+
+        <div class="form-group">
+          <button (click)="deleteUser()" class="btn btn-primary">
+            Delete User
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="showReadAllUser">
+      <table id="table">
+        <tr>
+          <th>EMAIL</th>
+          <th>PASSWORD</th>
+          <th>USER TYPE</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.user_type }}</td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="showAllEmail">
+      <table id="table">
+        <tr>
+          <th>EID</th>
+          <th>SUBJECT</th>
+          <th>BODY</th>
+          <th>SENDER</th>
+          <th>RECIEVER</th>
+          <th>TYPE</th>
+          <th>DELETE</th>
+        </tr>
+        <tr *ngFor="let email of emails">
+          <td>{{ email.eid }}</td>
+          <td>{{ email.subject }}</td>
+          <td>{{ email.body }}</td>
+          <td>{{ email.sender }}</td>
+          <td>{{ email.receiver }}</td>
+          <td>{{ email.is_spam ? "SPAM" : "NOT SPAM" }}</td>
+          <td><a (click)="delete(email.eid)">DELETE</a></td>
+        </tr>
+      </table>
+    </div>
+    <p style="text-align: left; margin-left: 15px;">{{ message }}</p>
+  </div>
+</div>

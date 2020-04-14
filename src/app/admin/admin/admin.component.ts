@@ -142,7 +142,10 @@ export class AdminComponent implements OnInit {
     this.userService.deleteMail(eid).subscribe((data) => {
       this.message = data["message"];
     });
-    this.ngOnInit();
-    this.viewAllEmail();
+    this.emails.forEach((element) => {
+      if (element.eid == eid) {
+        this.emails.pop();
+      }
+    });
   }
 }

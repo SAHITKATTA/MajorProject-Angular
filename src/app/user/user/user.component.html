@@ -13,10 +13,57 @@
     </div>
   </div>
   <div class="main">
-    <div *ngIf="showInbox || showSent || showSpam || showViewAll">
+    <div *ngIf="showInbox">
       <table id="table">
         <tr>
-          <th>EID</th>
+          <th>SUBJECT</th>
+          <th>BODY</th>
+          <th>FROM</th>
+          <th>DELETE</th>
+        </tr>
+        <tr *ngFor="let email of emails">
+          <td>{{ email.subject }}</td>
+          <td>{{ email.body }}</td>
+          <td>{{ email.sender }}</td>
+          <td><a (click)="delete(email.eid)">DELETE</a></td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="showSent">
+      <table id="table">
+        <tr>
+          <th>SUBJECT</th>
+          <th>BODY</th>
+          <th>TO</th>
+          <th>DELETE</th>
+        </tr>
+        <tr *ngFor="let email of emails">
+          <td>{{ email.subject }}</td>
+          <td>{{ email.body }}</td>
+          <td>{{ email.receiver }}</td>
+          <td><a (click)="delete(email.eid)">DELETE</a></td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="showSpam">
+      <table id="table">
+        <tr>
+          <th>SUBJECT</th>
+          <th>BODY</th>
+          <th>FROM</th>
+          <th>DELETE</th>
+        </tr>
+        <tr *ngFor="let email of emails">
+          <td>{{ email.subject }}</td>
+          <td>{{ email.body }}</td>
+          <td>{{ email.sender }}</td>
+          <td><a (click)="delete(email.eid)">DELETE</a></td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="showViewAll">
+      <table id="table">
+        <tr>
           <th>SUBJECT</th>
           <th>BODY</th>
           <th>SENDER</th>
@@ -25,7 +72,6 @@
           <th>DELETE</th>
         </tr>
         <tr *ngFor="let email of emails">
-          <td>{{ email.eid }}</td>
           <td>{{ email.subject }}</td>
           <td>{{ email.body }}</td>
           <td>{{ email.sender }}</td>

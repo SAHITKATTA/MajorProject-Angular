@@ -30,6 +30,7 @@ export class UserComponent implements OnInit {
   });
   ngOnInit() {
     this.user = localStorage.getItem("user");
+    this.message = "";
     this.userService.inbox(this.user).subscribe((data) => {
       this.emails = data;
     });
@@ -135,29 +136,17 @@ export class UserComponent implements OnInit {
     this.userService.predict(text).subscribe((data) => {
       this.message = data["message"];
     });
-    this.predictForm.reset();
     this.emailForm.reset();
   }
   delete(eid) {
     this.userService.deleteMail(eid).subscribe((data) => {
       this.message = data["message"];
     });
-    if (this.showInbox) {
-      this.ngOnInit();
-      this.viewInbox();
-    }
-    if (this.showSent) {
-      this.ngOnInit();
-      this.viewSent();
-    }
-    if (this.showSpam) {
-      this.ngOnInit();
-      this.viewSpam();
-    }
-    if (this.showViewAll) {
-      this.ngOnInit();
-      this.viewAll();
-    }
+    this.emails.forEach((element) => {
+      if (element.eid == eid) {
+        this.emails.pop();
+      }
+    });
   }
 }
 // RESET PREDICT FORM AND EMAIL FORM IN EVERY METHOD

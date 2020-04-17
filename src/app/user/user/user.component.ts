@@ -46,7 +46,6 @@ export class UserComponent implements OnInit {
     this.showSpam = false;
     this.showCompose = false;
     this.showViewAll = false;
-    this.showViewAll = false;
     this.showPredict = false;
     this.userService.inbox(this.user).subscribe((data) => {
       this.emails = data;

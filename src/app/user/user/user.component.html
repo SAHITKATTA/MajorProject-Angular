@@ -2,14 +2,43 @@
 <div align="center" class="body">
   <div class="menu">
     <div class="sidenav">
-      <a (click)="viewInbox()">INBOX</a>
-      <a (click)="viewSent()">SENT</a>
-      <a (click)="viewSpam()">SPAM</a>
-      <a (click)="viewCompose()">COMPOSE</a>
-      <a (click)="viewAll()">ALL</a>
-      <a (click)="viewPredict()">PREDICT</a>
+      <a
+        (click)="viewInbox()"
+        [ngStyle]="{ color: this.showInbox ? '#f1f1f1' : '' }"
+        >INBOX</a
+      >
+      <a
+        (click)="viewSent()"
+        [ngStyle]="{ color: this.showSent ? '#f1f1f1' : '' }"
+        >SENT</a
+      >
+      <a
+        (click)="viewSpam()"
+        [ngStyle]="{ color: this.showSpam ? '#f1f1f1' : '' }"
+        >SPAM</a
+      >
+      <a
+        (click)="viewCompose()"
+        [ngStyle]="{ color: this.showCompose ? '#f1f1f1' : '' }"
+        >COMPOSE</a
+      >
+      <a
+        (click)="viewAll()"
+        [ngStyle]="{ color: this.showViewAll ? '#f1f1f1' : '' }"
+        >ALL</a
+      >
+      <a
+        (click)="viewPredict()"
+        [ngStyle]="{ color: this.showPredict ? '#f1f1f1' : '' }"
+        >PREDICT</a
+      >
       <br /><br /><br />
-      <a (click)="logout()" style="bottom: 0;">Logout</a>
+      <a
+        (click)="logout()"
+        style="bottom: 0;"
+        [ngStyle]="{ color: this.showDeleteUser ? '#f1f1f1' : '' }"
+        >Logout</a
+      >
     </div>
   </div>
   <div class="main">

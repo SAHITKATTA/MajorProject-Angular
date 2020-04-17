@@ -1,11 +1,31 @@
 <div align="center" class="body">
   <div class="menu">
     <div class="sidenav">
-      <a (click)="viewCreateUser()">Create User</a>
-      <a (click)="viewUpdateUser()">Update User</a>
-      <a (click)="viewDeleteUser()">Delete User</a>
-      <a (click)="viewReadAllUser()">View All Users</a>
-      <a (click)="viewAllEmail()">View All Emails</a>
+      <a
+        (click)="viewCreateUser()"
+        [ngStyle]="{ color: this.showCreateUser ? '#f1f1f1' : '' }"
+        >Create User</a
+      >
+      <a
+        (click)="viewUpdateUser()"
+        [ngStyle]="{ color: this.showUpdateUser ? '#f1f1f1' : '' }"
+        >Update User</a
+      >
+      <a
+        (click)="viewDeleteUser()"
+        [ngStyle]="{ color: this.showDeleteUser ? '#f1f1f1' : '' }"
+        >Delete User</a
+      >
+      <a
+        (click)="viewReadAllUser()"
+        [ngStyle]="{ color: this.showReadAllUser ? '#f1f1f1' : '' }"
+        >View All Users</a
+      >
+      <a
+        (click)="viewAllEmail()"
+        [ngStyle]="{ color: this.showAllEmail ? '#f1f1f1' : '' }"
+        >View All Emails</a
+      >
       <br /><br /><br />
       <a (click)="logout()" style="bottom: 0;">Logout</a>
     </div>

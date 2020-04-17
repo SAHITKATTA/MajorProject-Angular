@@ -35,13 +35,13 @@
       <form [formGroup]="userForm" style="text-align: left;">
         <div class="form-group">
           <label for="email">
-            Email:
+            Email
             <input type="text" formControlName="email" class="form-control" />
           </label>
         </div>
         <div class="form-group">
           <label for="password">
-            Password:
+            Password
             <input
               type="text"
               formControlName="password"
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
           <label for="user_type">
-            User Type:
+            User Type
             <input
               type="text"
               formControlName="user_type"
@@ -70,13 +70,13 @@
       <form [formGroup]="userForm" style="text-align: left;">
         <div class="form-group">
           <label for="email">
-            Email:
+            Email
             <input type="text" formControlName="email" class="form-control" />
           </label>
         </div>
         <div class="form-group">
           <label for="password">
-            Password:
+            Password
             <input
               type="text"
               formControlName="password"
@@ -85,7 +85,7 @@
           </label>
         </div>
         <div class="form-group">
-          <button (click)="updateUser()" class="btn btn-primary">
+          <button (click)="updateUser()" class="btn btn-success">
             Update User
           </button>
         </div>
@@ -95,52 +95,64 @@
       <form [formGroup]="userForm" style="text-align: left;">
         <div class="form-group">
           <label for="email">
-            Email:
+            Email
             <input type="text" formControlName="email" class="form-control" />
           </label>
         </div>
 
         <div class="form-group">
-          <button (click)="deleteUser()" class="btn btn-primary">
+          <button (click)="deleteUser()" class="btn btn-danger">
             Delete User
           </button>
         </div>
       </form>
     </div>
     <div *ngIf="showReadAllUser">
-      <table id="table">
-        <tr>
-          <th>EMAIL</th>
-          <th>PASSWORD</th>
-          <th>USER TYPE</th>
-        </tr>
-        <tr *ngFor="let user of users">
-          <td>{{ user.email }}</td>
-          <td>{{ user.password }}</td>
-          <td>{{ user.user_type }}</td>
-        </tr>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+            <th>USER TYPE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.user_type }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <div *ngIf="showAllEmail">
-      <table id="table">
-        <tr>
-          <th>EID</th>
-          <th>SUBJECT</th>
-          <th>BODY</th>
-          <th>SENDER</th>
-          <th>RECIEVER</th>
-          <th>TYPE</th>
-          <th>DELETE</th>
-        </tr>
-        <tr *ngFor="let email of emails">
-          <td>{{ email.eid }}</td>
-          <td>{{ email.subject }}</td>
-          <td>{{ email.body }}</td>
-          <td>{{ email.sender }}</td>
-          <td>{{ email.receiver }}</td>
-          <td>{{ email.is_spam ? "SPAM" : "NOT SPAM" }}</td>
-          <td><a (click)="delete(email.eid)">DELETE</a></td>
-        </tr>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>EID</th>
+            <th>SUBJECT</th>
+            <th>BODY</th>
+            <th>SENDER</th>
+            <th>RECIEVER</th>
+            <th>TYPE</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let email of emails">
+            <td>{{ email.eid }}</td>
+            <td>{{ email.subject }}</td>
+            <td>{{ email.body }}</td>
+            <td>{{ email.sender }}</td>
+            <td>{{ email.receiver }}</td>
+            <td>{{ email.is_spam ? "SPAM" : "NOT SPAM" }}</td>
+            <td>
+              <a (click)="delete(email.eid)"
+                ><img src="../../../assets/trash.fill.png"
+              /></a>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <p style="text-align: left; margin-left: 15px;">{{ message }}</p>
